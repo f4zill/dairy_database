@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html{
+    background-color: rgba(36, 71, 20, 0.925);
+     font-family: "Trade Winds", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+h2{
+    color:antiquewhite;
+    margin-left: 38%;
+}
+ul{
+    display:flexbox;
+    list-style: none;
+}
+li{
+    color: antiquewhite;
+    padding: 10px;
+}
+h1{
+    padding-left: 20%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: rgba(128, 126, 20, 0.692);
+  width: 1000px;
+  margin: 18%;
+  margin-top: 10%;
+  margin-left: 35%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+button{
+    background-color:rgba(39, 37, 37, 0.151);
+    padding: 12px;
+    border-radius: 8px;
+    color: aliceblue;
+}
+button:hover{
+    background-color: rgb(255, 238, 0);
+    color: rgba(0, 0, 0, 0.692);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+form{
+    color: antiquewhite;
+}
+
+</style>
+<body>
+<div class="card">
+    <h1>Add Medical Record</h1>
+<form method="POST">
+    Cow ID: <input type="number" name="CowID" required><br>
+    Treatment Date: <input type="date" name="TreatmentDate"><br>
+    Treatment Details: <textarea name="TreatmentDetails"></textarea><br>
+    Vet Name: <input type="text" name="VetName"><br>
+    Cost: <input type="number" step="0.01" name="Cost"><br>
+    <button>ADD RECORD</button>
+</form>
+<BUtton><a href="/medical_records">Back</a>
+
+        </div>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Cow</title></head>
+<style>
+    html{
+    background-color: rgba(36, 71, 20, 0.925);
+     font-family: "Trade Winds", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+h2{
+    color:antiquewhite;
+    margin-left: 38%;
+}
+ul{
+    display:flexbox;
+    list-style: none;
+}
+li{
+    color: antiquewhite;
+    padding: 10px;
+}
+h1{
+    padding-left: 20%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: rgba(128, 126, 20, 0.692);
+  width: 700px;
+  margin: 18%;
+  margin-top: 10%;
+  margin-left: 35%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+button{
+    background-color:rgba(39, 37, 37, 0.151);
+    padding: 12px;
+    border-radius: 8px;
+    color: aliceblue;
+}
+button:hover{
+    background-color: rgb(255, 238, 0);
+    color: rgba(0, 0, 0, 0.692);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+form{
+    color: antiquewhite;
+}
+
+</style>
+<body>
+<div class="card">
+            <h1>Add New Cow</h1>
+<form method="POST">
+    <input type="text" name="tag" placeholder="Tag" required><br>
+    <input type="text" name="Breed" placeholder="Breed"><br>
+    <input type="date" name="dob"><br>
+    <select name="Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select><br>
+    <input type="date" name="purchase_date"><br>
+    <select name="Status">
+        <option value="Active">Active</option>
+        <option value="Sold">Sold</option>
+        <option value="Dead">Dead</option>
+    </select><br>
+    <button type="submit">Add Cow</button>
+</form>
+
+    <br>
+    <button><a href="/cows">Back to Cow List</a>
+        </div>
+    </div>
+
+</body>
+</html>
