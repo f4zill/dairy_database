@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head><title>Medical Records</title></head>
+
+<style>
+    html{
+    background-color: rgba(36, 71, 20, 0.925);
+     font-family: "Trade Winds", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+h2{
+    color:antiquewhite;
+    margin-left: 38%;
+}
+ul{
+    display:flexbox;
+    list-style: none;
+}
+li{
+    color: antiquewhite;
+    padding: 10px;
+}
+h1{
+    padding-left: 20%;
+    font-family: 'Courier New', Courier, monospace;
+}
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: rgba(128, 126, 20, 0.692);
+  width: 1000px;
+  margin: 18%;
+  margin-top: 10%;
+  margin-left: 35%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+button{
+    background-color:rgba(39, 37, 37, 0.151);
+    padding: 12px;
+    border-radius: 8px;
+    color: aliceblue;
+}
+button:hover{
+    background-color: rgb(255, 238, 0);
+    color: rgba(0, 0, 0, 0.692);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgb(255, 238, 0);
+}
+form{
+    color: antiquewhite;
+}
+
+</style>
+<body>
+<div class="card">
+    <h1>Medical Records</h1>
+    <<button><a href="/">Home</a></button>  <!-- Fixed url_for argument -->
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Cow ID</th>
+            <th>Date</th>
+            <th>Treatment</th>
+            <th>Vet</th>
+            <th>Cost (₹)</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+            <td>{{ record.RecordID }}</td>
+            <td>{{ record.CowID }}</td>
+            <td>{{ record.TreatmentDate }}</td>
+            <td>{{ record.TreatmentDetails }}</td>
+            <td>{{ record.VetName }}</td>
+            <td>{{ record.Cost }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</html>

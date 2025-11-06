@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Farm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background: linear-gradient(135deg, #1a3d0f 0%, #2d5a1e 50%, #1f4716 100%);
+            min-height: 100vh;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        html::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #faebd7;
+            text-align: center;
+            font-size: 2.8em;
+            margin: 40px 0 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+
+        li {
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: #faebd7;
+            padding: 12px 24px;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 238, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        a:hover::before {
+            left: 100%;
+        }
+
+        a:hover {
+            color: rgb(255, 238, 0);
+            background: rgba(255, 238, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 238, 0, 0.3);
+        }
+
+        .card {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(145deg, rgba(128, 126, 20, 0.8), rgba(110, 108, 15, 0.8));
+            width: 90%;
+            max-width: 700px;
+            margin: 5% auto;
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 238, 0, 0.1);
+            animation: slideUp 0.8s ease-out 0.5s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 238, 0, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            box-shadow: 0 16px 48px rgba(255, 238, 0, 0.4);
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 238, 0, 0.3);
+        }
+
+        h2 {
+            color: #faebd7;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            background: linear-gradient(145deg, rgba(60, 60, 60, 0.5), rgba(30, 30, 30, 0.5));
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: #faebd7;
+            margin: 0;
+            cursor: pointer;
+            border: 2px solid rgba(255, 238, 0, 0.2);
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 238, 0, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, rgb(255, 238, 0), rgb(230, 215, 0));
+            color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 8px 24px rgba(255, 238, 0, 0.5);
+            transform: translateY(-3px);
+            border-color: rgb(255, 238, 0);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 238, 0, 0.4);
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        form {
+            color: #faebd7;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+                margin: 20px 0 10px;
+            }
+
+            ul {
+                padding: 15px;
+            }
+
+            a {
+                padding: 10px 16px;
+                font-size: 0.9em;
+            }
+
+            .card {
+                padding: 30px 20px;
+                width: 95%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            button {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🐄 Welcome to Dairy Farm 🥛</h1>
+
+    <nav>
+        <ul>
+            <li><a href="templates/cows.html">🐄 Cows</a></li>
+            <li><a href="templates/milk_production.html">🥛 Milk Production</a></li>
+            <li><a href="templates/milk_sales.html">💰 Milk Sales</a></li>
+            <li><a href="templates/staff.html">👥 Staff</a></li>
+            <li><a href="templates/expenses.html">💵 Expenses</a></li>
+        </ul>
+    </nav>
+
+    <div class="card">
+        <h2>⚡ Quick Actions</h2>
+        <div class="button-grid">
+            <button onclick="location.href='templates/add_cow.html'"><span>Add Cow</span></button>
+            <button onclick="location.href='templates/add_milk_production.html'"><span>Add Milk Production</span></button>
+            <button onclick="location.href='templates/add_milk_sale.html'"><span>Add Milk Sale</span></button>
+            <button onclick="location.href='templates/add_staff.html'"><span>Add Staff</span></button>
+            <button onclick="location.href='templates/add_feed_record.html'"><span>Add Feed Record</span></button>
+            <button onclick="location.href='templates/add_medical_record.html'"><span>Add Medical Record</span></button>
+        </div>
+    </div>
+</body>
+</html>
